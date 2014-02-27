@@ -1,13 +1,33 @@
-# Compiled Object files
-*.slo
+# Autotool files
+configure
+Makefile.in
+config.h.in
+aclocal.m4
+libtool
+autom4te.cache/
+build-aux/
+m4/
+
+# Configure files
+Makefile
+config.log
+config.status
+config.h
+stamp-*
+
+# Compiled files
+.libs/
+.deps/
 *.lo
 *.o
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
+# Products
+src/libcset.la
+tests/about
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+# Run files
+*.log
+*.trs
+
+# Package files
+*.tar.*
