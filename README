@@ -1,0 +1,29 @@
+libcset
+=======
+
+Complementary Set Library
+
+Dependencies
+------------
+
+None.
+
+Compiling & Installing
+----------------------
+
+To update the build system:
+
+    autoreconf --install
+
+To compile:
+
+    ./configure --prefix=PATH
+    make
+    make install
+
+License
+-------
+
+Use of this software is governed by the MIT license.
+
+Copyright © 2014, [Alexandre Isoard](mailto:alexandre.isoard@gmail.com)

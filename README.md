@@ -1,4 +1,0 @@
-libcset
-=======
-
-Complementary Set Library
