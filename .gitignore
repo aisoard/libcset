@@ -19,12 +19,15 @@ stamp-*
 # Compiled files
 .libs/
 .deps/
+html/
+latex/
 *.lo
 *.o
 
 # Products
 src/libcset.la
 tests/about
+doc/libcset.pdf
 
 # Run files
 *.log

@@ -1,0 +1,73 @@
+/**
+\mainpage The Complimentary Set Library
+
+Introduction
+============
+
+The *Complimentary Set Library* (`libcset`) is a C++ library designed to manipulate
+infinite sets of vertices -- but described in a finite way -- in an abstract
+multi-dimensional integer space of arbitrary dimension.
+
+The name of the library comes from the internal representation:
+a set can be described in two complementary ways.
+Either as conditions for vertices to lie inside the set,
+or as conditions for vertices to lie outside the set.
+
+Both of those representations have the same power of description,
+but the efficiency of the operation over those sets is tied
+to their representation.
+
+This library is an improvement over the *Integer Set Library* (`isl`).
+
+Description
+===========
+
+This library provides three class: `space`, `inset` and `outset`.
+
+Space
+-----
+
+The `space` class describe a multi-dimensional integer space of a certain dimension.
+They describe the underlying structure of `inset` and `outset`.
+
+In/Out Set
+----------
+
+The `inset` and `outset` are both representations of a subset of a `space`.
+An `inset` is a disjunction of conjunction of constraints,
+while an `outset` is a conjunction of disjunction of anti-constraints.
+
+Naturally, intersection of `inset` might be computationally expensive,
+while their union is always straight forward.
+And it is the other way around for `outset`.
+
+Future
+======
+
+This section explains the future extensions of the library.
+
+Nested Space
+------------
+
+`space` will be extended with sub-`space` dimensions:
+a dimension of a space can take values in a sub-`space`.
+Thus allowing nesting of `space`.
+
+Hybrid Space
+------------
+
+`space` will be extended with two finite dimensions:
+- dictionary dimension
+- modulo dimensions
+
+A dictionary dimension takes values in a finite set of words, called dictionary.
+They only allow equality constraint, and provide no operations.
+
+A k-modulo dimension takes values in the finite set of integers modulo k
+(between 0 included and k excluded).
+They only allow equality constraint, but
+provide addition, subtraction, multiplication,
+and division when k is a prime number.
+
+*/
+# vim:set ft=doxygen spell:

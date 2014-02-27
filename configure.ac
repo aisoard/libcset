@@ -12,6 +12,10 @@ AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])
 AX_CXXFLAGS_WARN_ALL
 
 DX_INIT_DOXYGEN([$PACKAGE_NAME],[doc/doxyfile],[doc])
+DX_DOXYGEN_FEATURE([ON])
+DX_DOT_FEATURE([ON])
+DX_HTML_FEATURE([ON])
+DX_PDF_FEATURE([ON])
 
 AC_CONFIG_HEADERS([include/cset/config.h])
 AC_CONFIG_FILES([Makefile include/Makefile src/Makefile tests/Makefile doc/Makefile])
