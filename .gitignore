@@ -13,6 +13,7 @@ Makefile
 config.log
 config.status
 config.h
+doxyfile
 stamp-*
 
 # Compiled files

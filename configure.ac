@@ -11,7 +11,10 @@ LT_INIT
 AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])
 AX_CXXFLAGS_WARN_ALL
 
-AC_CONFIG_HEADERS([src/config.h])
-AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
+DX_INIT_DOXYGEN([$PACKAGE_NAME],[doc/doxyfile],[doc])
+
+AC_CONFIG_HEADERS([include/cset/config.h])
+AC_CONFIG_FILES([Makefile include/Makefile src/Makefile tests/Makefile doc/Makefile])
+AC_CONFIG_FILES([doc/doxyfile])
 
 AC_OUTPUT

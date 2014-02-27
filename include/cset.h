@@ -1,11 +1,11 @@
 #ifndef LIBCSET_H
 #define LIBCSET_H
 
-#include <string>
+/**
+ * \brief Root namespace of the cset library
+ */
+namespace cset {}
 
-namespace cset {
-	std::string about(void);
-	std::string version(void);
-}
+#include "cset/about.h"
 
 #endif // LIBCSET_H
