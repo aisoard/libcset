@@ -2,9 +2,11 @@
 #define LIBCSET_H
 
 /**
- * \brief Root namespace of the cset library
+ * \namespace cset
+ * \brief Root namespace of the cset library.
+ *
+ * This namespace contains all external objects provided by the `cset` library.
  */
-namespace cset {}
 
 #include "cset/about.h"
 

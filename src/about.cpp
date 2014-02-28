@@ -1,11 +1,11 @@
 #include "cset/about.h"
 
-#include "cset/config.h"
+#include "config.h"
 
 #include <string>
 
 std::string cset::about(void) {
-	return PACKAGE_STRING;
+	return PACKAGE "-" VERSION " - " PACKAGE_NAME;
 }
 
 std::string cset::version(void) {
