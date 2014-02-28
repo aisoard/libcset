@@ -1,0 +1,30 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+/**
+ * \file
+ * \brief Contains options defined at configuration.
+ * \author Alexandre Isoard <alexandre.isoard@gmail.com>
+ *
+ * Those macros are defined by the \c configure script.
+ */
+
+/// \brief Name of package
+#undef PACKAGE
+
+/// \brief Version of this package.
+#undef VERSION
+
+/// \brief Full name of this package.
+#undef PACKAGE_NAME
+
+/// \brief Full name and version of this package.
+#undef PACKAGE_STRING
+
+/// \brief Home page for this package.
+#undef PACKAGE_URL
+
+/// \brief Address where bug reports for this package should be sent.
+#undef PACKAGE_BUGREPORT
+
+#endif

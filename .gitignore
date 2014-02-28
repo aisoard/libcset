@@ -1,7 +1,6 @@
 # Autotool files
 configure
 Makefile.in
-config.h.in
 aclocal.m4
 libtool
 autom4te.cache/
