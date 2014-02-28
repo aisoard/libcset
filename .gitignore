@@ -27,6 +27,7 @@ latex/
 # Products
 src/libcset.la
 tests/about
+tests/space
 doc/libcset.pdf
 
 # Run files

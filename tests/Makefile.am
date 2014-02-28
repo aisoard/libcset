@@ -1,9 +1,11 @@
 check_HEADERS=test.h
 
-check_PROGRAMS=about
+AM_CPPFLAGS=-I$(top_srcdir)/include
+LDADD=$(top_builddir)/src/libcset.la
+
+check_PROGRAMS=about space
 
 about_SOURCES=about.cpp
-about_CPPFLAGS=-I$(top_srcdir)/include
-about_LDADD=$(top_builddir)/src/libcset.la
+space_SOURCES=space.cpp
 
 TESTS=$(check_PROGRAMS)
