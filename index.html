@@ -92,29 +92,32 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1>Introduction </h1>
-<p>The <em>Complimentary Set Library</em> (<code>libcset</code>) is a C++ library designed to manipulate infinite sets of vertices &ndash; but described in a finite way &ndash; in an abstract multi-dimensional integer space of arbitrary dimension.</p>
+<p>The <em>Complimentary Set Library</em> is a C++ library designed to manipulate sets of vertices &ndash; potentially infinite, but described in a finite way &ndash; in an abstract multi-dimensional integer space of arbitrary dimension.</p>
 <p>The name of the library comes from the internal representation: a set can be described in two complementary ways. Either as conditions for vertices to lie inside the set, or as conditions for vertices to lie outside the set.</p>
-<p>Both of those representations have the same power of description, but the efficiency of the operation over those sets is tied to their representation.</p>
-<p>This library is an improvement over the <em>Integer Set Library</em> (<code>isl</code>).</p>
+<p>Both of those representations have the same power of description, but as the efficiency of the operation over those sets is tied to their representation, combining the two allow for overall more efficient algorithm.</p>
 <h1>Description </h1>
-<p>This library provides three class: <code>space</code>, <code>inset</code> and <code>outset</code>.</p>
+<p>This library provides three class: <a class="el" href="classcset_1_1space.html">cset::space</a>, cset::inset and cset::outset.</p>
 <h2>Space </h2>
-<p>The <code>space</code> class describe a multi-dimensional integer space of a certain dimension. They describe the underlying structure of <code>inset</code> and <code>outset</code>.</p>
+<p>The <a class="el" href="classcset_1_1space.html">cset::space</a> class describes a multi-dimensional integer space. They describe the underlying structure of cset::inset and cset::outset.</p>
 <h2>In/Out Set </h2>
-<p>The <code>inset</code> and <code>outset</code> are both representations of a subset of a <code>space</code>. An <code>inset</code> is a disjunction of conjunction of constraints, while an <code>outset</code> is a conjunction of disjunction of anti-constraints.</p>
-<p>Naturally, intersection of <code>inset</code> might be computationally expensive, while their union is always straight forward. And it is the other way around for <code>outset</code>.</p>
+<p>The cset::inset and cset::outset are both representation of a subset of a space. An in-set is a <em>disjunction of conjunctions</em> &ndash; <code>or</code> of <code>and</code> &ndash; of constraints, while an out-set is a <em>conjunction of disjunctions</em> &ndash; <code>and</code> of <code>or</code> &ndash; of anti-constraints.</p>
+<p>In this context, the <em>De Morgan's laws</em> dictate the trivial way to complement an in-set into an out-set, and vice versa. Naturally, while union of in-sets is trivial by construction, intersection is usually computationally expensive. As expected, it is the other way around for out-sets.</p>
 <h1>Future </h1>
 <p>This section explains the future extensions of the library.</p>
+<h2>Modulo Dimensions </h2>
+<p>Spaces will be extended with a new kind of dimension: modulo dimension.</p>
+<p>A <img class="formulaInl" alt="$k$" src="form_0.png"/>-modulo dimension takes values in a finite set of integers: between 0 included, and <img class="formulaInl" alt="$k$" src="form_0.png"/> excluded. They provide addition, subtraction, multiplication and division when <img class="formulaInl" alt="$k$" src="form_0.png"/> is a prime number.</p>
+<p>Contrary to standard infinite integer dimension, they only provide a congruence relation that act like equality.</p>
+<p>Those dimension could be emulated by standard integer dimension but most of the current algorithm would behave slowly on them.</p>
 <h2>Nested Space </h2>
-<p><code>space</code> will be extended with sub-<code>space</code> dimensions: a dimension of a space can take values in a sub-<code>space</code>. Thus allowing nesting of <code>space</code>.</p>
-<h2>Hybrid Space </h2>
-<p><code>space</code> will be extended with two finite dimensions:</p>
-<ul>
-<li>dictionary dimension</li>
-<li>modulo dimensions</li>
-</ul>
-<p>A dictionary dimension takes values in a finite set of words, called dictionary. They only allow equality constraint, and provide no operations.</p>
-<p>A k-modulo dimension takes values in the finite set of integers modulo k (between 0 included and k excluded). They only allow equality constraint, but provide addition, subtraction, multiplication, and division when k is a prime number. </p>
+<p>Spaces will be extended with nesting capabilities: a space can be built by composing spaces either by product or by sum.</p>
+<p>A product of spaces is a space of dimension the sum of dimension of each space, but of a different kind. It is the equivalent of <em>Cartesian product</em> of vectorial space. This setup would allow to naturally describe objects like relations, parametrized sets, and more.</p>
+<p>A sum of spaces is an hybrid disjoint union of spaces. Those spaces can be of different dimension.</p>
+<p>Those two operation provide an algebra over space with strong expression power and will require a strong typing system.</p>
+<h2>Polymorphism </h2>
+<p>Space nesting allow to define polymorph spaces: a space can be built by composing spaces of unknown type.</p>
+<p>Object on those spaces would have limited capabilities: unknown space can only be assumed to provide equality comparison, and no other operation.</p>
+<p>Restrained polymorphism might allow to assume more operation. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
