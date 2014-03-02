@@ -4,9 +4,9 @@
 Introduction
 ============
 
-The *Complimentary Set Library* (`libcset`) is a C++ library designed to manipulate
-infinite sets of vertices -- but described in a finite way -- in an abstract
-multi-dimensional integer space of arbitrary dimension.
+The *Complimentary Set Library* is a C++ library designed to manipulate
+sets of vertices -- potentially infinite, but described in a finite way --
+in an abstract multi-dimensional integer space of arbitrary dimension.
 
 The name of the library comes from the internal representation:
 a set can be described in two complementary ways.
@@ -14,60 +14,85 @@ Either as conditions for vertices to lie inside the set,
 or as conditions for vertices to lie outside the set.
 
 Both of those representations have the same power of description,
-but the efficiency of the operation over those sets is tied
-to their representation.
+but as the efficiency of the operation over those sets is tied
+to their representation, combining the two allow for overall
+more efficient algorithm.
 
-This library is an improvement over the *Integer Set Library* (`isl`).
 
 Description
 ===========
 
-This library provides three class: `space`, `inset` and `outset`.
+This library provides three class: \ref cset::space, \ref cset::inset and \ref cset::outset.
 
 Space
 -----
 
-The `space` class describe a multi-dimensional integer space of a certain dimension.
-They describe the underlying structure of `inset` and `outset`.
+The \ref cset::space class describes a multi-dimensional integer space.
+They describe the underlying structure of \ref cset::inset and \ref cset::outset.
 
 In/Out Set
 ----------
 
-The `inset` and `outset` are both representations of a subset of a `space`.
-An `inset` is a disjunction of conjunction of constraints,
-while an `outset` is a conjunction of disjunction of anti-constraints.
+The \ref cset::inset and \ref cset::outset are both representation
+of a subset of a space.
+An in-set is a *disjunction of conjunctions* -- \c or of \c and -- of constraints,
+while an out-set is a *conjunction of disjunctions* -- \c and of \c or -- of anti-constraints.
 
-Naturally, intersection of `inset` might be computationally expensive,
-while their union is always straight forward.
-And it is the other way around for `outset`.
+In this context, the _De Morgan's laws_ dictate the trivial way
+to complement an in-set into an out-set, and vice versa.
+Naturally, while union of in-sets is trivial by construction,
+intersection is usually computationally expensive.
+As expected, it is the other way around for out-sets.
+
 
 Future
 ======
 
 This section explains the future extensions of the library.
 
+Modulo Dimensions
+-----------------
+
+Spaces will be extended with a new kind of dimension: modulo dimension.
+
+A \f$k\f$-modulo dimension takes values in a finite set of integers:
+between 0 included, and \f$k\f$ excluded.
+They provide addition, subtraction, multiplication
+and division when \f$k\f$ is a prime number.
+
+Contrary to standard infinite integer dimension,
+they only provide a congruence relation that act like equality.
+
+Those dimension could be emulated by standard integer dimension
+but most of the current algorithm would behave slowly on them.
+
 Nested Space
 ------------
 
-`space` will be extended with sub-`space` dimensions:
-a dimension of a space can take values in a sub-`space`.
-Thus allowing nesting of `space`.
+Spaces will be extended with nesting capabilities:
+a space can be built by composing spaces either by product or by sum.
 
-Hybrid Space
+A product of spaces is a space of dimension the sum of dimension of each space,
+but of a different kind. It is the equivalent of _Cartesian product_ of vectorial space.
+This setup would allow to naturally describe objects like relations, parametrized sets, and more.
+
+A sum of spaces is an hybrid disjoint union of spaces.
+Those spaces can be of different dimension.
+
+Those two operation provide an algebra over space with strong expression power and will require
+a strong typing system.
+
+Polymorphism
 ------------
 
-`space` will be extended with two finite dimensions:
-- dictionary dimension
-- modulo dimensions
+Space nesting allow to define polymorph spaces:
+a space can be built by composing spaces of unknown type.
 
-A dictionary dimension takes values in a finite set of words, called dictionary.
-They only allow equality constraint, and provide no operations.
+Object on those spaces would have limited capabilities:
+unknown space can only be assumed to provide equality comparison,
+and no other operation.
 
-A k-modulo dimension takes values in the finite set of integers modulo k
-(between 0 included and k excluded).
-They only allow equality constraint, but
-provide addition, subtraction, multiplication,
-and division when k is a prime number.
+Restrained polymorphism might allow to assume more operation.
 
 */
 # vim:set ft=doxygen spell:
